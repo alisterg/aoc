@@ -4,11 +4,6 @@ import (
 	"testing"
 )
 
-func TestSolution(t *testing.T) {
-	input := ""
-	expected := ""
+func TestSolution(t *testing.T) {}
 
-	if actual := solve(input); actual != expected {
-		t.Errorf("Expected `%v`, got `%v`", expected, actual)
-	}
-}
+func TestSolutionPartTwo(t *testing.T) {}
