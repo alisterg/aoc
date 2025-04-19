@@ -6,7 +6,7 @@ import (
 
 func TestSolution(t *testing.T) {
 	//input := ""
-	expected := 11
+	expected := 2196996
 
 	if actual := solve(); actual != expected {
 		t.Errorf("Expected `%v`, got `%v`", expected, actual)
@@ -15,7 +15,7 @@ func TestSolution(t *testing.T) {
 
 func TestSolutionPartTwo(t *testing.T) {
 	//input := ""
-	expected := 11
+	expected := 23655822
 
 	if actual := solveSimilarityScore(); actual != expected {
 		t.Errorf("Expected `%v`, got `%v`", expected, actual)

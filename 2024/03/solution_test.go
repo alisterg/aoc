@@ -12,3 +12,12 @@ func TestSolution(t *testing.T) {
 		t.Errorf("Expected `%v`, got `%v`", expected, actual)
 	}
 }
+
+func TestSolutionPartTwo(t *testing.T) {
+	//input := ""
+	expected := 82045421
+
+	if actual := solvePartTwo(); actual != expected {
+		t.Errorf("Expected `%v`, got `%v`", expected, actual)
+	}
+}
