@@ -33,7 +33,7 @@ import (
 
 func TestSolution(t *testing.T) {
 	input := ""
-	expected := ""
+	expected := "abc"
 
 	if actual := solve(input); actual != expected {
 		t.Errorf("Expected \`%v\`, got \`%v\`", expected, actual)
