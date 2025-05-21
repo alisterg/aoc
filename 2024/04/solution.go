@@ -1,9 +1,9 @@
 package aoc_2024_04
 
 import (
-	"os"
-	"fmt"
 	"bufio"
+	"fmt"
+	"os"
 	"strings"
 )
 
@@ -25,11 +25,11 @@ func solve() int {
 		{-1, -1},
 	}
 
-	grid       := loadInputGrid()
+	grid := loadInputGrid()
 	searchTerm := "XMAS"
-	numRows    := len(grid)
-	numCols    := len(grid[0])
-	total      := 0
+	numRows := len(grid)
+	numCols := len(grid[0])
+	total := 0
 
 	validPosition := func(row, col int) bool {
 		return row >= 0 && row < numRows && col >= 0 && col < numCols
@@ -39,8 +39,8 @@ func solve() int {
 		for col := 0; col < len(grid[row]); col++ {
 			for _, c := range directions {
 				dx, dy := c[0], c[1]
-				x, y   := row, col
-				valid  := true
+				x, y := row, col
+				valid := true
 
 				for k := 0; k < len(searchTerm); k++ {
 					if !validPosition(x, y) || grid[x][y] != searchTerm[k] {
@@ -58,7 +58,7 @@ func solve() int {
 		}
 	}
 
-    return total
+	return total
 }
 
 // solvePartTwo takes an input 2d matrix and
@@ -67,13 +67,13 @@ func solve() int {
 // The 'MAS' can be forward or backwards
 // It returns the number of matches found.
 func solvePartTwo() int {
-	grid       := loadInputGrid()
-	numRows    := len(grid)
-	numCols    := len(grid[0])
-	total      := 0
+	grid := loadInputGrid()
+	numRows := len(grid)
+	numCols := len(grid[0])
+	total := 0
 
 	validPosition := func(row, col int) bool {
-		return row > 0 && row < numRows - 1 && col > 0 && col < numCols - 1
+		return row > 0 && row < numRows-1 && col > 0 && col < numCols-1
 	}
 
 	for row := 0; row < len(grid); row++ {
@@ -105,7 +105,7 @@ func solvePartTwo() int {
 		}
 	}
 
-    return total
+	return total
 }
 
 // loadInputGrid gets the data in a usable format
