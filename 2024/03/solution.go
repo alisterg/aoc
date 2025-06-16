@@ -3,10 +3,10 @@ package aoc_2024_03
 import (
 	"bufio"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"regexp"
 	"strconv"
-	"io/ioutil"
 )
 
 const (
@@ -14,12 +14,12 @@ const (
 	mainRegexMatch = "mul\\(\\d{1,3},\\d{1,3}\\)"
 	numberRegex    = "\\d{1,3}"
 
-    // Get all the matches we want in a single regex using grouping
+	// Get all the matches we want in a single regex using grouping
 	// Each match is a slice of strings:
 	//   - match[0]: the entire match.
 	//   - match[1]: will be "do()", "don't()", or (for a mul instruction) equal to the full string.
 	//   - match[2] and match[3]: available only for a mul instruction.
-	partTwoRegex   = `(do\(\)|don't\(\)|mul\(([0-9]{1,3}),([0-9]{1,3})\))`
+	partTwoRegex = `(do\(\)|don't\(\)|mul\(([0-9]{1,3}),([0-9]{1,3})\))`
 )
 
 // Scan an input, find valid pairs of numbers in a
@@ -83,24 +83,24 @@ func solve() int {
 func solvePartTwo() int {
 	data, err := ioutil.ReadFile("input.txt")
 	if err != nil {
-        fmt.Println(err)
-        return -1
+		fmt.Println(err)
+		return -1
 	}
 	text := string(data)
 
 	re, err := regexp.Compile(partTwoRegex)
 	if err != nil {
-        fmt.Println(err)
-        return -1
+		fmt.Println(err)
+		return -1
 	}
 
 	matches := re.FindAllStringSubmatch(text, -1)
 	if matches == nil || len(matches) == 0 {
-        fmt.Println("No matches found")
-        return -1
-    }
+		fmt.Println("No matches found")
+		return -1
+	}
 
-	enabled := true  // Initially, mul instructions are enabled.
+	enabled := true // Initially, mul instructions are enabled.
 	grandTotal := 0
 
 	for _, match := range matches {
@@ -118,18 +118,18 @@ func solvePartTwo() int {
 			// match[2] and match[3] should have the two numbers.
 			a, err := strconv.Atoi(match[2])
 			if err != nil {
-                fmt.Println(err)
-                return -1
+				fmt.Println(err)
+				return -1
 			}
 			b, err := strconv.Atoi(match[3])
 			if err != nil {
-                fmt.Println(err)
-                return -1
+				fmt.Println(err)
+				return -1
 			}
 			product := a * b
 			grandTotal += product
 		}
 	}
 
-    return grandTotal
+	return grandTotal
 }

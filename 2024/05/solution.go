@@ -4,9 +4,9 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
-	"sort"
 )
 
 // loadInput loads the file as a []string
@@ -64,11 +64,11 @@ func sortPageUpdate(orderingRules []string, update string) string {
 		for _, rule := range orderingRules {
 			ruleParts := strings.Split(rule, "|")
 
-			if (parts[i] == ruleParts[0] && parts[j] == ruleParts[1]) {
+			if parts[i] == ruleParts[0] && parts[j] == ruleParts[1] {
 				return true
 			}
 
-			if (parts[j] == ruleParts[0] && parts[i] == ruleParts[1]) {
+			if parts[j] == ruleParts[0] && parts[i] == ruleParts[1] {
 				return false
 			}
 
