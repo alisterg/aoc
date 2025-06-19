@@ -17,7 +17,7 @@ function template() {
 	cat <<EOF
 package $PACKAGE
 
-func solve(input string) string {
+func solve(input string) int {
     return input
 }
 EOF
@@ -31,12 +31,25 @@ import (
 	"testing"
 )
 
+const testInput = \`
+
+\`
+
 func TestSolution(t *testing.T) {
-	input := ""
 	expected := "abc"
 
+	if actual := solve(testInput); actual != expected {
+		t.Errorf("===FAIL===: Expected \`%v\`, got \`%v\`", expected, actual)
+	}
+}
+
+func TestSolutionRealInput(t *testing.T) {
+	data, _ := os.ReadFile("input.txt")
+	input := string(data)
+	expected := -1
+
 	if actual := solve(input); actual != expected {
-		t.Errorf("Expected \`%v\`, got \`%v\`", expected, actual)
+		t.Errorf("===FAIL===: Expected `%v`, got `%v`", expected, actual)
 	}
 }
 EOF
@@ -53,14 +66,4 @@ if [ ! -f "$DIR/solution.go" ]; then
 fi
 if [ ! -f "$DIR/solution_test.go" ]; then
 	test_template > "$DIR/solution_test.go"
-fi
-
-# Create the doc files. TODO: automatically download them
-if [ ! -f "$DIR/problem.md" ]; then
-    echo "# $YEAR day $DAY" > "$DIR/problem.md"
-	# curl https://adventofcode.com/$YEAR/day/$DAY > "$DIR/problem.html"
-fi
-if [ ! -f "$DIR/input.txt" ]; then
-    touch "$DIR/input.txt"
-	# curl https://adventofcode.com/$YEAR/day/$DAY/input > "$DIR/input.txt"
 fi
