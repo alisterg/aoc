@@ -60,8 +60,8 @@ func generateOps(operators []int, length int) [][]int {
 }
 
 // parseNums parses one line of the input into:
-//  - target number
-//  - slice of operands
+//   - target number
+//   - slice of operands
 func parseNums(line string) (int, []int) {
 	line = strings.TrimSpace(line)
 	if line == "" {

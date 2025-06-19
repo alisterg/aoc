@@ -2,6 +2,6 @@ test:
 	go test -v ./...
 
 format:
-	gofmt ./...
+	gofmt -w .
 
 .PHONY: test
