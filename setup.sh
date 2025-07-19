@@ -18,7 +18,7 @@ function template() {
 package $PACKAGE
 
 func solve(input string) int {
-    return input
+    return -1
 }
 EOF
 }
@@ -28,6 +28,7 @@ function test_template() {
 package $PACKAGE
 
 import (
+	"os"
 	"testing"
 )
 
@@ -36,7 +37,7 @@ const testInput = \`
 \`
 
 func TestSolution(t *testing.T) {
-	expected := "abc"
+	expected := -1
 
 	if actual := solve(testInput); actual != expected {
 		t.Errorf("===FAIL===: Expected \`%v\`, got \`%v\`", expected, actual)
@@ -49,7 +50,7 @@ func TestSolutionRealInput(t *testing.T) {
 	expected := -1
 
 	if actual := solve(input); actual != expected {
-		t.Errorf("===FAIL===: Expected `%v`, got `%v`", expected, actual)
+		t.Errorf("===FAIL===: Expected \`%v\`, got \`%v\`", expected, actual)
 	}
 }
 EOF
